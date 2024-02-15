@@ -1,0 +1,78 @@
+{% extends "_base.html" %}
+
+{% block content %}
+
+<style>
+    .centered-text {
+        text-align: center;
+        margin-bottom: 20px; /* Adds space below the heading */
+    }
+    .button-group {
+        display: flex;
+        justify-content: center;
+        gap: 20px; /* Adds space between buttons */
+        margin-bottom: 20px; /* Adds space below the buttons */
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px; /* Adds space above the buttons */
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center; /* Ensures text is centered within the cells */
+    }
+    th {
+        background-color: #004785;
+        color: white;
+    }
+    .btn {
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+    .btn-primary {
+        background-color: #004785;
+        color: white;
+    }
+    .btn-primary:hover {
+        background-color: #003366;
+    }
+    .btn-secondary {
+        background-color: #6c757d;
+        color: white;
+    }
+    .btn-secondary:hover {
+        background-color: #5a6268;
+    }
+</style>
+
+<div class="centered-text">
+    <h2>Six Years Lung Cancer Risk Prediction</h2>
+</div>
+<table>
+    <tr>
+        <th>Years</th>
+        <th>1 year</th>
+        <th>2 years</th>
+        <th>3 years</th>
+        <th>4 years</th>
+        <th>5 years</th>
+        <th>6 years</th>
+    </tr>
+    <tr>
+        <td>Predicted Values</td>
+        {% for score in scores %}
+        <td>{{ score }}%</td>
+        {% endfor %}
+    </tr>
+    <!-- Add more rows for additional patients if needed -->
+</table>
+<div class="button-group">
+    <a href="{{ url_for('dicom_processor.download_csv') }}" class="btn btn-primary">Download CSV</a>
+    <!-- Button to predict another -->
+    <a href="{{ url_for('dicom_processor.upload') }}" class="btn btn-primary">Predict Another</a>
+</div>
+
+{% endblock %}

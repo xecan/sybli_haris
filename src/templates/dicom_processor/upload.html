@@ -1,0 +1,78 @@
+{% extends "_base.html" %}
+{% block content %}
+<style>
+    .container_upload {
+        max-width: 750px;
+        margin: 0 auto;
+        padding: 20px;
+        text-align: center;
+    }
+    .upload-instructions {
+        margin-top: 20px;
+        font-size: 20px; /* Increased font size */
+        margin-bottom: 30px; /* Increased spacing */
+    }
+    .file-input-container {
+        margin: 20px 0;
+    }
+    .file-input-button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px; /* You can adjust the size as needed */
+        text-align: center;
+        display: inline-block;
+    }
+    .file-input-button:hover {
+        background-color: #45a049;
+    }
+    .file-list-container {
+        border: 2px solid #ccc;
+        padding: 10px;
+        margin: 20px 0;
+        height: 200px; /* Increased height */
+        overflow-y: auto;
+    }
+    .submit-button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px 24px; /* Adjusted padding for a larger button */
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 20px; /* Larger font size for the button text */
+        margin-top: 15px;
+    }
+    .submit-button:hover {
+        background-color: #45a049;
+    }
+</style>
+
+<div class="container_upload">
+    <h1>Predict Cancer Risk</h1>
+    <p class="upload-instructions">The model expects the input to be an Axial LDCT, where the first frame is of the abdominal region and the last frame is along the clavicles. When the input is of the dicom type, the frames will be automatically sorted.</p>
+    <form method="post" enctype="multipart/form-data" action="{{ url_for('dicom_processor.upload') }}">
+        <div class="file-input-container">
+            <label for="dicom_file" class="file-input-button">Choose File</label>
+            <input type="file" name="dicom_file" id="dicom_file" accept=".dcm" multiple style="display: none;">
+        </div>
+        <div id="file-list" class="file-list-container">
+            <!-- JavaScript will populate this area with the list of chosen files -->
+        </div>
+        <input type="submit" class="submit-button" value="Predict">
+    </form>
+</div>
+<script>
+    // JavaScript to update the list of files when files are chosen
+    document.getElementById('dicom_file').addEventListener('change', function() {
+        var fileListContainer = document.getElementById('file-list');
+        fileListContainer.innerHTML = ''; // Clear the list container
+        for (var i = 0; i < this.files.length; i++) {
+            fileListContainer.innerHTML += this.files[i].name + '<br>';
+        }
+    });
+</script>
+{% endblock %}

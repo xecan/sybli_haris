@@ -1,0 +1,13 @@
+{% extends "_base.html" %}
+{% block content %}
+
+<div class="text-center"> <!-- Ensure everything is centered -->
+    <h1 style="margin-top: 50px; margin-bottom: 30px;">Welcome {{current_user.email}}!</h1>
+
+    <p style="font-size: 40px; margin-bottom: 30px;">A Validated Deep Learning Model to Predict Future Lung Cancer Risk From a Single Low-Dose Chest Computed Tomography</p>
+
+    <a href="{{ url_for('dicom_processor.upload') }}" class="btn btn-primary" style="font-size: 26px; padding: 10px 20px; margin-top: 20px;">Predict Cancer Risk</a>
+
+</div>
+
+{% endblock %}
