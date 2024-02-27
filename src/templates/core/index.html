@@ -1,13 +1,21 @@
 {% extends "_base.html" %}
 {% block content %}
 
-<div class="text-center"> <!-- Ensure everything is centered -->
-    <h1 style="margin-top: 50px; margin-bottom: 30px;">Welcome {{current_user.email}}!</h1>
+<div class="container text-center"> <!-- Use container for proper alignment and padding -->
 
-    <p style="font-size: 40px; margin-bottom: 30px;">A Validated Deep Learning Model to Predict Future Lung Cancer Risk From a Single Low-Dose Chest Computed Tomography</p>
+    <div class="content-section mt-3"> <!-- Semantic class names and Bootstrap spacing utilities -->
+        <h1>XECAN Lung Screen</h1>
+        <p class="text-justify">XECAN Lung Screen is a web interface designed for the Sybil lung screen AI model. This model was collaboratively developed by MIT's Abdul Latif Jameel Clinic for Machine Learning in Health, the Mass General Cancer Center (MGCC), and Chang Gung Memorial Hospital (CGMH). Sybil has undergone validation using three independent datasets: a set of 6,282 LDCTs from NLST participants, 8,821 LDCTs from Massachusetts General Hospital (MGH), and 12,280 LDCTs from Chang Gung Memorial Hospital (CGMH), including individuals with diverse smoking histories, including nonsmokers.</p>
+        
+        <a href="{{ url_for('dicom_processor.upload') }}" class="btn btn-primary btn-lg mt-3 mb-4" style="font-size: 20px; padding: 10px 30px">Predict Now</a>
 
-    <a href="{{ url_for('dicom_processor.upload') }}" class="btn btn-primary" style="font-size: 26px; padding: 10px 20px; margin-top: 20px;">Predict Cancer Risk</a>
+        <div class="video-wrapper my-4"> <!-- Responsive video wrapper -->
+            <iframe class="youtube-video" width="560" height="315" src="https://www.youtube.com/embed/Fxk0RoazjqU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
 
+        <p class="text-justify mt-4">The Sybil model aims to predict short and long-term lung cancer risk based on a single LDCT upload, without the need for additional clinical data or radiologist annotations. If you're interested in utilizing XECAN Lung Screen for predicting lung cancer risk, you can begin by uploading your LDCT scan through the provided interface. Sybil is currently not FDA approved and is intended for utilization in testing and research endeavors.</p>
+
+   </div>
 </div>
 
 {% endblock %}

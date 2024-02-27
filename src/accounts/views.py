@@ -24,7 +24,7 @@ def register():
         flash("You registered and are now logged in. Welcome!", "success")
 
         return redirect(url_for("core.home"))
-
+ 
     return render_template("accounts/register.html", form=form)
 
 
