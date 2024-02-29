@@ -11,7 +11,7 @@
         display: flex;
         justify-content: center;
         gap: 20px; /* Adds space between buttons */
-        margin-bottom: 20px; /* Adds space below the buttons */
+        margin-bottom: 15px; /* Adds space below the buttons */
     }
     table {
         width: 100%;
@@ -24,20 +24,20 @@
         text-align: center; /* Ensures text is centered within the cells */
     }
     th {
-        background-color: #004785;
+        background-color: #0d6efd;
         color: white;
     }
     .btn {
-        padding: 10px 20px;
+        padding: 10px 10px;
         text-decoration: none;
-        border-radius: 5px;
+        border-radius: 4px;
     }
     .btn-primary {
-        background-color: #004785;
+        background-color: #0d6efd;
         color: white;
     }
     .btn-primary:hover {
-        background-color: #003366;
+        background-color: #0d6efd;
     }
     .btn-secondary {
         background-color: #6c757d;
@@ -49,7 +49,8 @@
 </style>
 
 <div class="centered-text">
-    <h2>Six Years Lung Cancer Risk Prediction</h2>
+    <br>
+    <h2>XECAN Lung Cancer Risk Prediction</h2>
 </div>
 <table>
     <tr>
@@ -62,13 +63,14 @@
         <th>6 years</th>
     </tr>
     <tr>
-        <td>Predicted Values</td>
+        <td>Predicted Risk Percentage</td>
         {% for score in scores %}
         <td>{{ score }}%</td>
         {% endfor %}
     </tr>
     <!-- Add more rows for additional patients if needed -->
 </table>
+<br>
 <div class="button-group">
     <a href="{{ url_for('dicom_processor.download_csv') }}" class="btn btn-primary">Download CSV</a>
     <!-- Button to predict another -->

@@ -32,13 +32,13 @@ def register():
 def login():
     if current_user.is_authenticated:
         flash("You are already logged in.", "info")
-        return redirect(url_for("core.home"))
+        return redirect(url_for("dicom_processor.upload"))
     form = LoginForm(request.form)
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
         if user and bcrypt.check_password_hash(user.password, request.form["password"]):
             login_user(user)
-            return redirect(url_for("core.home"))
+            return redirect(url_for("dicom_processor.upload"))
         else:
             flash("Invalid email and/or password.", "danger")
             return render_template("accounts/login.html", form=form)
@@ -50,4 +50,4 @@ def login():
 def logout():
     logout_user()
     flash("You were logged out.", "success")
-    return redirect(url_for("accounts.login"))
+    return redirect(url_for("core.home"))
