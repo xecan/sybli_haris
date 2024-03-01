@@ -37,7 +37,7 @@ def upload():
             session['scores'] = scores_percentage
             session['user_name'] = secure_filename(user_name)
             clear_upload_folder()
-            return render_template('dicom_processor/results.html', scores=scores_percentage)
+            return render_template('dicom_processor/results.html', user_name=user_name, scores=scores_percentage)
         else:
             flash('No valid files uploaded', "danger")
             return redirect(request.url)

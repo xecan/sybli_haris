@@ -49,6 +49,26 @@
     .submit-button:hover {
         background-color: #0d6efd;
     }
+
+    .loader {
+    position: absolute;
+    left: 50%;
+    top: 80%;
+    z-index: 1;
+    margin: -76px 0 0 -76px;
+    border: 16px solid #504c4c98; 
+    border-top: 16px solid #0d6efd; 
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+    display: none;
+    }
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 </style>
 
 <div class="container_upload">
@@ -64,12 +84,13 @@
 
         <div class="file-input-container">
             <label for="dicom_file" class="file-input-button">Choose File</label>
-            <input type="file" name="dicom_files" id="dicom_file" accept=".dcm" multiple>
+            <input type="file" name="dicom_files" id="dicom_file" accept=".dcm" multiple hidden/>
         </div>
         <div id="file-list" class="file-list-container">
             <!-- JavaScript will populate this area with the list of chosen files -->
         </div>
-        <input type="submit" class="submit-button" value="  Predict  ">
+        <input type="submit"  id="submit-button" class="submit-button" value="  Predict  ">
+        <div id="loader" class="loader"></div>
         <br>
         <br>
         <br>
@@ -86,5 +107,14 @@
             fileListContainer.innerHTML += this.files[i].name + '<br>';
         }
     });
+
+    document.getElementById('submit-button').addEventListener('click', function() {
+        // Display the loader
+        document.getElementById('loader').style.display = 'block';
+        
+        // Prevent the default form submission if needed
+        // event.preventDefault();
+    });
+
 </script>
 {% endblock %}

@@ -1,7 +1,7 @@
 @echo off
 set SECRET_KEY=fdkjshfhjsdfdskfdsfdcbsjdkfdsdf
-set DEBUG=False
-set APP_SETTINGS=config.ProductionConfig
+set DEBUG=True
+set APP_SETTINGS=config.DevelopmentConfig
 set DATABASE_URL=sqlite:///db.sqlite
 set FLASK_APP=src
-set FLASK_DEBUG=0
+set FLASK_DEBUG=1

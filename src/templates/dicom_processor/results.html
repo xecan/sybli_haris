@@ -54,6 +54,7 @@
 </div>
 <table>
     <tr>
+        <th>Patient Name</th>
         <th>Years</th>
         <th>1 year</th>
         <th>2 years</th>
@@ -63,6 +64,7 @@
         <th>6 years</th>
     </tr>
     <tr>
+        <td>{{ user_name }}</td>
         <td>Predicted Risk Percentage</td>
         {% for score in scores %}
         <td>{{ score }}%</td>
